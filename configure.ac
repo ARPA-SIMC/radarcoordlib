@@ -19,5 +19,6 @@ AC_CHECK_LIB([Geographic], [main],
 
 
 AC_CONFIG_FILES([Makefile
-                 doc/Makefile])
+                 doc/Makefile
+		 doc/Doxyfile])
 AC_OUTPUT

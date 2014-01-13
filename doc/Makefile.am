@@ -23,9 +23,9 @@ clean-local:
 #	rm -f Doxyfile
 #	rm -f Doxygen.log
 
-EXTRA_DIST = \
-	     mainpage.dox \
-	     FAQ.dox
+#EXTRA_DIST = \
+#	     mainpage.dox \
+#	     FAQ.dox
 
 CLEANFILES = \
 	     Doxygen.log \

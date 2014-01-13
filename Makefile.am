@@ -1,3 +1,5 @@
+AM_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir)
+
 lib_LTLIBRARIES = libradarcoord_util.la
 
 libradarcoord_util_la_SOURCES = \
