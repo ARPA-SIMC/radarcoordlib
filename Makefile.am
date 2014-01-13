@@ -1,8 +1,12 @@
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir)
 
-lib_LTLIBRARIES = libradarcoord_util.la
+pkgconfigdir = $(libdir)/pkgconfig
 
-libradarcoord_util_la_SOURCES = \
+pkgconfig_DATA = radarcoordlib.pc
+
+lib_LTLIBRARIES = libradarcoord.la
+
+libradarcoord_la_SOURCES = \
 				generic.cpp \
 				RadarBeamCoord_util.cpp \
 				radar_coord_exceptions.cpp \
@@ -11,7 +15,7 @@ libradarcoord_util_la_SOURCES = \
 				RadarSegment_util.cpp \
 				RadarSite.cpp
 
-packageincludedir = $(includedir)/radarcoord_util
+packageincludedir = $(includedir)/radarcoord
 
 packageinclude_HEADERS = \
 			 generic.hpp \
