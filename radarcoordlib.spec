@@ -1,7 +1,7 @@
 Summary: Radar Coord Lib
 Name:    radarcoordlib
-Version: 0.1
-Release: 1%{?dist}
+Version: 0.2
+Release: 1496%{?dist}
 License: GPLv2+
 URL:     http://www.arpa.emr.it/sim
 Source0: %{name}-%{version}.tar.gz
@@ -33,12 +33,15 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc %{_docdir}/%{name}
-%{_includedir}/radarcoord/*.hpp
+%{_includedir}/radarcoordlib/*.hpp
 %{_libdir}/libradarcoord.*
 %{_libdir}/pkgconfig/radarcoordlib.pc
 
 
 %changelog
-* Mon Jan 13 2014 Daniele Branchini <dbranchini@carenza.metarpa> - 
+* Tue Jan 14 2014 Daniele Branchini <dbranchini@carenza.metarpa> - 0.2-1489
+- Spostato codice nella dir radarcoordlib
+
+* Mon Jan 13 2014 Daniele Branchini <dbranchini@carenza.metarpa> - 0.1-1
 - Initial build.
 
