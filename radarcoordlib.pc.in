@@ -7,4 +7,4 @@ Name: @PACKAGE_NAME@
 Description: radar coord library
 Version: @VERSION@
 Cflags: -I${includedir}
-Libs: -L${libdir} @LIBS@
+Libs: -L${libdir} @LIBS@ -lradarcoord
