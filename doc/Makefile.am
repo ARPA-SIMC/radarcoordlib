@@ -19,13 +19,6 @@ uninstall-local:
 
 clean-local:
 	rm -rf html
-	rm -rf latex 
-#	rm -f Doxyfile
-#	rm -f Doxygen.log
-
-#EXTRA_DIST = \
-#	     mainpage.dox \
-#	     FAQ.dox
 
 CLEANFILES = \
 	     Doxygen.log \
