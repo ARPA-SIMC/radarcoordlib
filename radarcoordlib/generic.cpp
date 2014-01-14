@@ -1,4 +1,4 @@
-#include <generic.hpp>
+#include <radarcoordlib/generic.hpp>
 
 float generic::getMissing(){
   if (numeric_limits<float>::has_quiet_NaN) return numeric_limits<float>::quiet_NaN();

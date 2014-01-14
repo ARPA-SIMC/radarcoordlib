@@ -12,14 +12,14 @@
 
 using namespace std;
 
-#include <radar_coord_exceptions.hpp>
-#include <generic.hpp>
-#include <RadarBeamCoord_util.hpp>
-#include <RadarGeoCoord_util.hpp>
-#include <RadarPoint_util.hpp>
 #include <GeographicLib/Math.hpp>
 #include <GeographicLib/Geodesic.hpp>
 #include <GeographicLib/GeodesicLine.hpp>
+#include <radarcoordlib/radar_coord_exceptions.hpp>
+#include <radarcoordlib/generic.hpp>
+#include <radarcoordlib/RadarBeamCoord_util.hpp>
+#include <radarcoordlib/RadarGeoCoord_util.hpp>
+#include <radarcoordlib/RadarPoint_util.hpp>
    
 #define SEGMENT_LENGTH_MINIMUM 1.
 

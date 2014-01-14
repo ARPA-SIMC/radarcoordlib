@@ -10,10 +10,10 @@
 using namespace std;
 
 
-#include <radar_coord_exceptions.hpp>
-#include <generic.hpp>
-#include <RadarBeamCoord_util.hpp>
-#include <RadarGeoCoord_util.hpp>
+#include <radarcoordlib/radar_coord_exceptions.hpp>
+#include <radarcoordlib/generic.hpp>
+#include <radarcoordlib/RadarBeamCoord_util.hpp>
+#include <radarcoordlib/RadarGeoCoord_util.hpp>
 /*!
  * \brief Class to calculate radar point coordinates related to radar place and coordinates
  *

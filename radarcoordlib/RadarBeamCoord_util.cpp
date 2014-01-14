@@ -1,5 +1,5 @@
-#include <RadarBeamCoord_util.hpp>
 #include <iostream>
+#include <radarcoordlib/RadarBeamCoord_util.hpp>
     RadarBeamCoord_util::RadarBeamCoord_util(float ea){ setEarthRadius(ea);}
     void RadarBeamCoord_util::setEarthRadius (float ea) { EarthRadius = ea; }
     float RadarBeamCoord_util::getEarthRadius () { return EarthRadius; }

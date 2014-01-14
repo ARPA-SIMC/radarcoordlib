@@ -9,8 +9,8 @@
 #include <iostream>
 using namespace std;
 
-#include <radar_coord_exceptions.hpp>
-#include <generic.hpp>
+#include <radarcoordlib/radar_coord_exceptions.hpp>
+#include <radarcoordlib/generic.hpp>
 
 /*!
  * \brief Class to store radar site coordinate

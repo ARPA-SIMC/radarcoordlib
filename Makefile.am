@@ -1,29 +1,14 @@
-AM_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir)
+SUBDIRS = radarcoordlib doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 
 pkgconfig_DATA = radarcoordlib.pc
 
-lib_LTLIBRARIES = libradarcoord.la
-
-libradarcoord_la_SOURCES = \
-				generic.cpp \
-				RadarBeamCoord_util.cpp \
-				radar_coord_exceptions.cpp \
-				RadarGeoCoord_util.cpp \
-				RadarPoint_util.cpp \
-				RadarSegment_util.cpp \
-				RadarSite.cpp
-
-packageincludedir = $(includedir)/radarcoord
-
-packageinclude_HEADERS = \
-			 generic.hpp \
-			 RadarBeamCoord_util.hpp \
-			 radar_coord_exceptions.hpp \
-			 RadarGeoCoord_util.hpp \
-			 RadarPoint_util.hpp \
-			 RadarSegment_util.hpp \
-			 RadarSite.hpp
-
-SUBDIRS = doc
+nobase_include_HEADERS = \
+			 radarcoordlib/generic.hpp \
+			 radarcoordlib/RadarBeamCoord_util.hpp \
+			 radarcoordlib/radar_coord_exceptions.hpp \
+			 radarcoordlib/RadarGeoCoord_util.hpp \
+			 radarcoordlib/RadarPoint_util.hpp \
+			 radarcoordlib/RadarSegment_util.hpp \
+			 radarcoordlib/RadarSite.hpp
