@@ -293,8 +293,7 @@ void RadarSegment_util::CalculateSegmentAzimuthStep(){
    latfirst=(GeographicLib::Math::real)beginSegment.getPointLat();
    lonfirst=(GeographicLib::Math::real)beginSegment.getPointLon();
    
-   const GeographicLib::Geodesic &
-         g1= GeographicLib::Geodesic::WGS84;
+   const GeographicLib::Geodesic g1= GeographicLib::Geodesic::WGS84();
    GeographicLib::GeodesicLine TmpLine;
 // compute the azimuthal angle for the segment beginSegment-radarSite. 
 // This will be used as first value in the following operation
@@ -357,8 +356,7 @@ void RadarSegment_util::CalculateSegmentAzimuthStep(){
 }
 
 void RadarSegment_util::SetGeodesicLine(){
-	const GeographicLib::Geodesic &
-              g1= GeographicLib::Geodesic::WGS84;
+	const GeographicLib::Geodesic g1= GeographicLib::Geodesic::WGS84();
 	GeographicLib::Math::real az_i, az_e,distance,temp;
 	GeographicLib::Math::real lat1,lat2,lon1,lon2;
 	lat1=(GeographicLib::Math::real) beginSegment.getPointLat();
@@ -392,8 +390,7 @@ bool RadarSegment_util::setSegmentVersus(){
 
    GeographicLib::Math::real latr,lonr,latp,lonp;
    GeographicLib::Math::real az_i, az_e,distance,temp;
-   const GeographicLib::Geodesic &
-         g1= GeographicLib::Geodesic::WGS84;
+   const GeographicLib::Geodesic g1= GeographicLib::Geodesic::WGS84();
 
    latr=beginSegment.getLatR();
    lonr=beginSegment.getLonR();
@@ -469,8 +466,7 @@ void RadarSegment_util::printSegmentInfo(std::ostream& out ){
 
 float RadarSegment_util::distanceAlongSegment(int i){
   if( i < getSegmentNumPoint()){
-	const GeographicLib::Geodesic &
-              g1= GeographicLib::Geodesic::WGS84;
+	const GeographicLib::Geodesic g1= GeographicLib::Geodesic::WGS84();
 	GeographicLib::Math::real az_i, az_e,distance,temp;
 	GeographicLib::Math::real lat1,lat2,lon1,lon2;
 	lat1=(GeographicLib::Math::real) beginSegment.getPointLat();

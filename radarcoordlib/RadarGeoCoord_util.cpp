@@ -119,8 +119,7 @@ bool RadarGeoCoord_util::calculateGeodesicParam() {
     this->GnomoCoords2GeoCoords (); 
   }
   typedef GeographicLib::Math::real real;
-  const GeographicLib::Geodesic &
-    g1= GeographicLib::Geodesic::WGS84;
+  const GeographicLib::Geodesic  g1= GeographicLib::Geodesic::WGS84();
   real   LatRad,LonRad, LatPoint, LonPoint, XPoint,Ypoint, Az1,Az2,S12,dummy;
 
   LatRad = getLatR();
@@ -140,8 +139,7 @@ bool RadarGeoCoord_util::invertGeodesicCalculation() {
   }
 
   typedef GeographicLib::Math::real real;
-  const GeographicLib::Geodesic &
-    g1= GeographicLib::Geodesic::WGS84;
+  const GeographicLib::Geodesic   g1= GeographicLib::Geodesic::WGS84();
   real   LatRad,LonRad, LatPoint, LonPoint, XPoint,Ypoint, Az1,S12,dummy;
   LatRad = getLatR();
   LonRad = getLonR();

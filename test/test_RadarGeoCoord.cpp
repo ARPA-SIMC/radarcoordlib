@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <RadarGeoCoord_util.hpp>
+#include <radarcoordlib/RadarGeoCoord_util.hpp>
 
 using namespace std;
 
@@ -80,7 +80,7 @@ main () {
   cout<<" ricalcolo partendo dalle coordinate della geodetica "<<endl;
   X=spc.getAzimuth();  
   Y=spc.getSurfaceDistance();
-  spc.setGeodesicCoordinate(X,Y);
+  spc.setPointGeodesicCoordinate(X,Y);
   cout<<"Latitude      : "<<spc.getPointLat()<<" N"<<endl;
   cout<<"Longitude     : "<<spc.getPointLon()<<" E"<<endl;
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;

@@ -1,4 +1,4 @@
-SUBDIRS = radarcoordlib doc
+SUBDIRS = radarcoordlib test doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 

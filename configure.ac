@@ -20,6 +20,7 @@ AC_CHECK_LIB([Geographic], [main],
 
 AC_CONFIG_FILES([Makefile
 		 radarcoordlib/Makefile
+		 test/Makefile
                  doc/Makefile
 		 doc/Doxyfile
 		 radarcoordlib.pc])
