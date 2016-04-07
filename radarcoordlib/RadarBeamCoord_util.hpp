@@ -12,7 +12,9 @@
 #define KeA(a)     4./3.* a        // WGS84 semimajor axis 
 
 /*!
- * \brief Class to calculate elements related to radar coordinates
+ * \brief Class to calculate elements related to radar coordinates.
+ *
+ * This class manage conversion between radar coordinates (Azimuth, elevation, range) and "pseudo-cilindric" coordinate on the a spherical Earth (azimuth, height, surface distance)
  *
  * This class compute calculation with radar coordinates\n
  * 
