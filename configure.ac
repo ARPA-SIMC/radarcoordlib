@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([radarcoordlib], [0.3], [palberoni@arpa.emr.it])
+AC_INIT([radarcoordlib], [0.4], [palberoni@arpa.emr.it])
 
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
