@@ -54,7 +54,7 @@ enum RotationVersus{CW=1, NOT_DEF_ROT_VERSUS = 0, CCW=-1};
 /*!
  * The point coordinate could be passed as one of the following options:\n
  * - Geographic (Latitude, Longitude,height)\n
- * - Gnomonic projection centred on the radar site (Xcoord, Ycoord, height) in meter\n
+ * - Aeqd projection centred on the radar site (Xcoord, Ycoord, height) in meter\n
  * - Geodetic coordinate (Azimuth, distance over Earth surface, height) (Degree, meter)\n
  * - Radar (Azimuth, Elevation, slatwise distance along the range) (Degree, degree, meter)
  */ 
@@ -171,10 +171,10 @@ public:
  */
 /*!
  * NOTE - This method set the initial height of points to 0 meter (asl) and compute all coordinates
- * \sa RadarPoint_util::setPointGnomoCoordsHeight
+ * \sa RadarPoint_util::setPointAeqdCoordsHeight
  * \sa RadarPoint_util::fillCoords
  */
-	bool  setSegmentGnomo(float x_begin, float y_begin, float x_end, float y_end) ;
+	bool  setSegmentAeqd(float x_begin, float y_begin, float x_end, float y_end) ;
 /*!
  * \brief Set segment extremes in geodesic coordinate relative to radar site
  * \param[in] az_begin         Azimuth X of the first point of the segment (Degree from N in clockwise direction)

@@ -29,7 +29,7 @@ RadarPoint_util::RadarPoint_util(float latr,float lonr,float heightr, float aTH,
   //this->setRadarCoord(param.getLatR(), param.getLonR(), param.getHeightR(), param.getAntennaTowerHeight ());
   std::cout<<param.getLatR()<<std::endl;//, param.getLonR(), param.getHeightR(), param.getAntennaTowerHeight ());
  
-  setPointGnomoCoordsElev(param.getPointXCoord(), param.getPointYCoord(),param.getElevation(),false);
+  setPointAeqdCoordsElev(param.getPointXCoord(), param.getPointYCoord(),param.getElevation(),false);
   setPointGeoCoordsHeight(param.getPointLat(), param.getPointLon(),param.getHeight(),false);
   setPointGeodesicCoordinateHeight(param.getAzimuth(), param.getSurfaceDistance(),param.getHeight(),false);
   setPointRadarCoordinateHeight(param.getAzimuth(), param.getHeight(), param.getBeamDistance(), false);
@@ -83,16 +83,16 @@ bool RadarPoint_util::isRadarCoordsSet() {
 	return isAzimuthSet() && isBeamDistanceSet() && (isElevationSet() || isHeightSet());
 }
 
-void RadarPoint_util::setPointGnomoCoordsHeight(float X, float Y, float H, bool cleanOtherCoords ) {
+void RadarPoint_util::setPointAeqdCoordsHeight(float X, float Y, float H, bool cleanOtherCoords ) {
   if (cleanOtherCoords) setPoint2Missing();
-  setPointGnomoCoords(X, Y, cleanOtherCoords);
+  setPointAeqdCoords(X, Y, cleanOtherCoords);
   setElevation(generic::getMissing());
   setHeight(H);
 }
 
-void RadarPoint_util::setPointGnomoCoordsElev(float X, float Y, float Elev, bool cleanOtherCoords ) {
+void RadarPoint_util::setPointAeqdCoordsElev(float X, float Y, float Elev, bool cleanOtherCoords ) {
   if (cleanOtherCoords) setPoint2Missing();
-  setPointGnomoCoords(X, Y, cleanOtherCoords);
+  setPointAeqdCoords(X, Y, cleanOtherCoords);
   setElevation(Elev);
 }
 
@@ -184,7 +184,7 @@ bool RadarPoint_util::radarElev2radarHeight(){
   return out;
 }
 
-bool RadarPoint_util::RadarCoords2GnomoCoords(){
+bool RadarPoint_util::RadarCoords2AeqdCoords(){
 // alias for RadarCoords2OtherCoords
  return RadarCoords2OthersCoords();
 }
@@ -240,8 +240,8 @@ bool RadarPoint_util::GeodeticCoords2RadarCoords(){
   return true;
 }
 
-bool RadarPoint_util::GnomoCoords2RadarCoords(){
-  if ( !this->isPointGnomoCoordsSet()) return false;
+bool RadarPoint_util::AeqdCoords2RadarCoords(){
+  if ( !this->isPointAeqdCoordsSet()) return false;
   if (calculateGeodesicParam()) return GeodeticCoords2RadarCoords();
   return false;
 }
@@ -260,7 +260,7 @@ bool RadarPoint_util::fillCoords () {
 RadarPoint_util& RadarPoint_util::operator= (RadarPoint_util param){
   this->setRadarCoord(param.getLatR(), param.getLonR(), 
         param.getHeightR(), param.getAntennaTowerHeight ());
-  this->setPointGnomoCoordsElev(param.getPointXCoord(), 
+  this->setPointAeqdCoordsElev(param.getPointXCoord(), 
 	param.getPointYCoord(),param.getElevation(),false);
   this->setPointGeoCoordsHeight(param.getPointLat(), 
 	param.getPointLon(),param.getHeight(),false);

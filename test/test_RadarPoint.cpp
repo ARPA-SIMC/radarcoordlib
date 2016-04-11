@@ -29,7 +29,7 @@ main () {
   cout<<"Longitude     : "<<spc.getPointLon()<<" E"<<endl;
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;
   cout<<"Y             : "<<spc.getPointYCoord()<<" m"<<endl;
-  cout<<"(X,Y) sono definite ? "<<spc.isPointGnomoCoordsSet()<<endl; 
+  cout<<"(X,Y) sono definite ? "<<spc.isPointAeqdCoordsSet()<<endl; 
 /*
   cout<<" X missing ? "<<spc.isMissing(spc.getPointXCoord())<<endl;
   cout<<" X defined ? "<<spc.isPointXCoordSet()<<endl;
@@ -37,13 +37,13 @@ main () {
   cout<<" Y defined ? "<<spc.isPointYCoordSet()<<endl;
   cout<<" True : "<<true<<endl;
  */
-  cout<<"Calcolo le coordinate (Gnomonica SPC)"<<endl;
-  spc.GeoCoords2GnomoCoords();
+  cout<<"Calcolo le coordinate (Aeqd SPC)"<<endl;
+  spc.GeoCoords2AeqdCoords();
   cout<<"Latitude      : "<<spc.getPointLat()<<" N"<<endl;
   cout<<"Longitude     : "<<spc.getPointLon()<<" E"<<endl;
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;
   cout<<"Y             : "<<spc.getPointYCoord()<<" m"<<endl;
-  cout<<"(X,Y) sono definite ?t "<<spc.isPointGnomoCoordsSet()<<endl; 
+  cout<<"(X,Y) sono definite ?t "<<spc.isPointAeqdCoordsSet()<<endl; 
   cout<<"Calcolo distanza e azimuth punto rispetto sito radar"<<endl;
   spc.calculateGeodesicParam();
   cout<<"Distanza  : "<<spc.getSurfaceDistance()<<" m"<<endl;
@@ -61,14 +61,14 @@ main () {
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;
   cout<<"Y             : "<<spc.getPointYCoord()<<" m"<<endl;
   cout<<"inizializzo con punto (x,y)"<<endl;
-  spc.setPointGnomoCoords(X,Y,false);  	// questa chiamata non calcola automaticamente le coordinate Gnomo 
+  spc.setPointAeqdCoords(X,Y,false);  	// questa chiamata non calcola automaticamente le coordinate Aeqd 
 					// ma devo chiamare il metodo a mano (vedi sotto)
   cout<<"Latitude      : "<<spc.getPointLat()<<" N"<<endl;
   cout<<"Longitude     : "<<spc.getPointLon()<<" E"<<endl;
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;
   cout<<"Y             : "<<spc.getPointYCoord()<<" m"<<endl;
   cout<<"Calcolo le coordinate geografiche"<<endl;
-  spc.GnomoCoords2GeoCoords();
+  spc.AeqdCoords2GeoCoords();
   cout<<"Latitude      : "<<spc.getPointLat()<<" N"<<endl;
   cout<<"Longitude     : "<<spc.getPointLon()<<" E"<<endl;
   cout<<"X             : "<<spc.getPointXCoord()<<" m"<<endl;

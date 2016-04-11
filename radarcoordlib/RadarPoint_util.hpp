@@ -23,7 +23,7 @@ using namespace std;
 /*!
  * The point coordinate could be passed as one of the following options:\n
  * - Geographic (Latitude, Longitude,height)\n
- * - Gnomonic projection centred on the radar site (Xcoord, Ycoord, height) in meter\n
+ * - Aeqd projection centred on the radar site (Xcoord, Ycoord, height) in meter\n
  * - Geodetic coordinate (Azimuth, distance over Earth surface, height) (Degree, meter)\n
  * - Radar (Azimuth, Elevation, slatwise distance along the range) (Degree, degree, meter)
  */ 
@@ -131,21 +131,21 @@ public:
 	void setPoint2Missing();
 
 /*!
- * \brief Set Gnomonic coordinates (Gnomonic projection centred on radar site)
+ * \brief Set Aeqd coordinates (Aeqd projection centred on radar site)
  * \param[in] X  - x coordinate (meter)
  * \param[in] Y  - y coordinate (meter)
  * \param[in] H  - height above msl (meter)
  * \param[in] cleanOtherCoords  If true Geodesic and Geographic and Elevation coordinate will be unset. 
  */
-	void setPointGnomoCoordsHeight(float X, float Y, float H, bool cleanOtherCoords = true);
+	void setPointAeqdCoordsHeight(float X, float Y, float H, bool cleanOtherCoords = true);
 /*!
- * \brief Set Gnomonic coordinates (Gnomonic projection centred on radar site)
+ * \brief Set Aeqd coordinates (Aeqd projection centred on radar site)
  * \param[in] X     - x coordinate (meter)
  * \param[in] Y     - y coordinate (meter)
  * \param[in] Elev  - Elevation above horizon (Degree)
  * \param[in] cleanOtherCoords  If true Geodesic and Geographic and Height coordinate will be unset. 
  */
-	void setPointGnomoCoordsElev(float X, float Y, float Elev, bool cleanOtherCoords = true);
+	void setPointAeqdCoordsElev(float X, float Y, float Elev, bool cleanOtherCoords = true);
 
 /*!
  * \brief Set point geographic coordinates
@@ -219,13 +219,13 @@ public:
 	bool syncRadarVerticalCoord();
 
 /*!
- * \brief Compute Gnomonic coordinate (X,Y) from radar coordinate
- * \return True is Calculation of Gnomonic coordinate is done
+ * \brief Compute Aeqd coordinate (X,Y) from radar coordinate
+ * \return True is Calculation of Aeqd coordinate is done
  */ 
 /*!
  * NOTE:  One of Elevation/Height should be set, the other will be computed
  */
-	bool RadarCoords2GnomoCoords();
+	bool RadarCoords2AeqdCoords();
 
 /*!
  * \brief Compute Geographic coordinate (Lat,Lon) from radar coordinate
@@ -246,8 +246,8 @@ public:
 	bool RadarCoords2GeodeticCoords();
 
 /*!
- * \brief Compute Gnomonic, Geographic and Geodetic coordinates from radar coordinate
- * \return True is Calculation of Geodetic, Geographic and Gnomonic coordinate is done
+ * \brief Compute Aeqd, Geographic and Geodetic coordinates from radar coordinate
+ * \return True is Calculation of Geodetic, Geographic and Aeqd coordinate is done
  */ 
 /*!
  * NOTE:  One of Elevation/Height should be set, the other will be computed
@@ -255,13 +255,13 @@ public:
 	bool RadarCoords2OthersCoords();
 
 /*!
- * \brief Compute radar coordinate from Gnomonic coordinate (X,Y) 
+ * \brief Compute radar coordinate from Aeqd coordinate (X,Y) 
  * \return True is Calculation of Radar coordinate is done
  */
 /*!
  * NOTE:  One of Elevation/Height should be set, the other will be computed
  */
-	bool GnomoCoords2RadarCoords();
+	bool AeqdCoords2RadarCoords();
 
 /*!
  * \brief Compute radar coordinate from Geographic coordinate (Lat,Lon)
@@ -282,7 +282,7 @@ public:
 	bool GeodeticCoords2RadarCoords();
 	
 /*!
- * \brief  Compute point coordinates for all Radar, Gnomonic,Geographic and Geodesic systems and syncronize vertical coords
+ * \brief  Compute point coordinates for all Radar, Aeqd,Geographic and Geodesic systems and syncronize vertical coords
  * \return True if calculation of coordinate is done\n
  *         False if calcualtion is not possible
  */

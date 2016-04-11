@@ -31,29 +31,29 @@ void RadarGeoCoord_util::setRadarCoord(float latr,float lonr,float heightr, floa
   if (cleanPointCoord) setPoint2Missing();
 }
 	
-void RadarGeoCoord_util::setPointGnomoCoords(float X, float Y, bool cleanOtherCoords ) {
+void RadarGeoCoord_util::setPointAeqdCoords(float X, float Y, bool cleanOtherCoords ) {
   if (cleanOtherCoords) setPoint2Missing();
 
   setPointXCoord(X);
   setPointYCoord(Y);
-//  if (setGeo) GnomoCoords2GeoCoords();
+//  if (setGeo) AeqdCoords2GeoCoords();
 }
 
-bool RadarGeoCoord_util::GnomoCoords2GeoCoords () {
+bool RadarGeoCoord_util::AeqdCoords2GeoCoords () {
 // if coordinates are unset return false
-  if ( !this->isPointGnomoCoordsSet()) return false;
+  if ( !this->isPointAeqdCoordsSet()) return false;
   typedef GeographicLib::Math::real real;
   real   LatRad,LonRad, LatPoint, LonPoint, XPoint,YPoint, AZ_gno,rk;
   real a = Constants::WGS84_a<real> ();
   real f = Constants::WGS84_f<real>();
   const Geodesic  geod(a,f);
-  const Gnomonic  Gn(geod);
+  const AzimuthalEquidistant  Aeqd(geod);
 
   LatRad = getLatR();
   LonRad = getLonR();
   XPoint = (real)getPointXCoord();
   YPoint = (real)getPointYCoord();
-  Gn.Reverse(LatRad,LonRad,XPoint,YPoint,LatPoint,LonPoint,AZ_gno, rk);
+  Aeqd.Reverse(LatRad,LonRad,XPoint,YPoint,LatPoint,LonPoint,AZ_gno, rk);
   setPointLat((float)LatPoint);
   setPointLon((float)LonPoint);
 
@@ -74,7 +74,7 @@ void RadarGeoCoord_util::setPointGeoCoords(float lat, float lon, bool cleanOther
   if (cleanOtherCoords) setPoint2Missing();
   setPointLat(lat);
   setPointLon(lon);
-//  if (setGnomo) GeoCoords2GnomoCoords();
+//  if (setAeqd) GeoCoords2AeqdCoords();
 }
 
 bool RadarGeoCoord_util::isPointLongitudeSet() {
@@ -89,7 +89,7 @@ bool RadarGeoCoord_util::isPointLatitudeSet() {
   return true;
 }
 
-bool RadarGeoCoord_util::GeoCoords2GnomoCoords () {
+bool RadarGeoCoord_util::GeoCoords2AeqdCoords () {
 // if coordinates are unset return false
   if ( !this->isPointGeoCoordsSet()) return false;
   typedef GeographicLib::Math::real real;
@@ -97,13 +97,13 @@ bool RadarGeoCoord_util::GeoCoords2GnomoCoords () {
   real a = Constants::WGS84_a<real> ();
   real f = Constants::WGS84_f<real>();
   const Geodesic  geod(a,f);
-  const Gnomonic  Gn(geod);
+  const AzimuthalEquidistant  Aeqd(geod);
 
   LatRad = getLatR();
   LonRad = getLonR();
   LatPoint = (real)getPointLat();
   LonPoint = (real)getPointLon();
-  Gn.Forward(LatRad,LonRad, LatPoint,LonPoint,XPoint,YPoint,AZ_gno, rk);
+  Aeqd.Forward(LatRad,LonRad, LatPoint,LonPoint,XPoint,YPoint,AZ_gno, rk);
   setPointXCoord((float)XPoint);
   setPointYCoord((float)YPoint);
 
@@ -115,8 +115,8 @@ bool RadarGeoCoord_util::GeoCoords2GnomoCoords () {
 
 bool RadarGeoCoord_util::calculateGeodesicParam() {
   if (!this->isPointGeoCoordsSet()){	
-    if (!this->isPointGnomoCoordsSet()) return false;
-    this->GnomoCoords2GeoCoords (); 
+    if (!this->isPointAeqdCoordsSet()) return false;
+    this->AeqdCoords2GeoCoords (); 
   }
   typedef GeographicLib::Math::real real;
   const GeographicLib::Geodesic  g1= GeographicLib::Geodesic::WGS84();
@@ -149,13 +149,13 @@ bool RadarGeoCoord_util::invertGeodesicCalculation() {
   GL.Position(S12,LatPoint,LonPoint);
   setPointLat(LatPoint);
   setPointLon(LonPoint);
-  GeoCoords2GnomoCoords();
+  GeoCoords2AeqdCoords();
   return true;
 }
 
 bool RadarGeoCoord_util::isPointXCoordSet() { return !generic::isMissing(Xcoord_p); }
 bool RadarGeoCoord_util::isPointYCoordSet() { return !generic::isMissing(Ycoord_p); }
-bool RadarGeoCoord_util::isPointGnomoCoordsSet() { return isPointXCoordSet() && isPointYCoordSet(); }
+bool RadarGeoCoord_util::isPointAeqdCoordsSet() { return isPointXCoordSet() && isPointYCoordSet(); }
 float RadarGeoCoord_util::getPointXCoord() {return Xcoord_p;}
 float RadarGeoCoord_util::getPointYCoord() { return Ycoord_p;}
 bool RadarGeoCoord_util::isPointGeoCoordsSet() { return isPointLongitudeSet() && isPointLatitudeSet(); }
@@ -178,9 +178,9 @@ void RadarGeoCoord_util::setAzimuth(float value) {Azimuth = value;}
 
 bool RadarGeoCoord_util::fillCoords () {
   if (calculateGeodesicParam()) {
-    if (!this->isPointGnomoCoordsSet()) GeoCoords2GnomoCoords();
+    if (!this->isPointAeqdCoordsSet()) GeoCoords2AeqdCoords();
   } else if (this->invertGeodesicCalculation()){
-    if (!this->isPointGnomoCoordsSet()) GeoCoords2GnomoCoords();
+    if (!this->isPointAeqdCoordsSet()) GeoCoords2AeqdCoords();
   }
   else return false;
   return true;  

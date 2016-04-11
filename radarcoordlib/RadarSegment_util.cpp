@@ -34,20 +34,20 @@ bool RadarSegment_util::setSegmentGeo(float lat_begin, float lon_begin, float la
      if (isRHI()){
 	if (beginSegment.getSurfaceDistance() < 0.1) {
 	    beginSegment.setPointGeodesicCoordinate(endSegment.getAzimuth(),0, false);
-	    beginSegment.setPointGnomoCoords(0., 0., false);
+	    beginSegment.setPointAeqdCoords(0., 0., false);
         }	
 	else {
            endSegment.setPointGeodesicCoordinate(beginSegment.getAzimuth(),0, false);
-	   endSegment.setPointGnomoCoords(0., 0., false);
+	   endSegment.setPointAeqdCoords(0., 0., false);
         }	
      }
      return true;
 }
 
-bool RadarSegment_util::setSegmentGnomo(float x_begin, float y_begin, float x_end, float y_end){
+bool RadarSegment_util::setSegmentAeqd(float x_begin, float y_begin, float x_end, float y_end){
      clearSegment();
-     beginSegment.setPointGnomoCoordsHeight(x_begin, y_begin,0.);
-     endSegment.setPointGnomoCoordsHeight(x_end, y_end,0.);
+     beginSegment.setPointAeqdCoordsHeight(x_begin, y_begin,0.);
+     endSegment.setPointAeqdCoordsHeight(x_end, y_end,0.);
 // check if coordinates calculation is correct for both extreems
      if (! endSegment.fillCoords() || ! beginSegment.fillCoords() ) {
 	clearSegment();
@@ -64,11 +64,11 @@ bool RadarSegment_util::setSegmentGnomo(float x_begin, float y_begin, float x_en
      if (isRHI()){
 	if (beginSegment.getSurfaceDistance() < 0.1) {
 	    beginSegment.setPointGeodesicCoordinate(endSegment.getAzimuth(),0, false);
-	    beginSegment.setPointGnomoCoords(0., 0., false);
+	    beginSegment.setPointAeqdCoords(0., 0., false);
         }	
 	else {
            endSegment.setPointGeodesicCoordinate(beginSegment.getAzimuth(),0, false);
-	   endSegment.setPointGnomoCoords(0., 0., false);
+	   endSegment.setPointAeqdCoords(0., 0., false);
         }	
      }
      return true;
@@ -96,11 +96,11 @@ bool RadarSegment_util::setSegmentGeodesic(float az_begin, float surfDist_begin,
      if (isRHI()){
 	if (beginSegment.getSurfaceDistance() < 0.1 ) {
 	    beginSegment.setPointGeodesicCoordinate(endSegment.getAzimuth(),0, false);
-	    beginSegment.setPointGnomoCoords(0., 0., false);
+	    beginSegment.setPointAeqdCoords(0., 0., false);
         }	
 	else {
            endSegment.setPointGeodesicCoordinate(beginSegment.getAzimuth(),0, false);
-	   endSegment.setPointGnomoCoords(0., 0., false);
+	   endSegment.setPointAeqdCoords(0., 0., false);
         }	
      }
      return true;

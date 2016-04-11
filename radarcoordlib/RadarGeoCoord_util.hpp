@@ -9,11 +9,11 @@
 #include <iostream>
 using namespace std;
 
-/* Utilizzo le funzioni messe a disposizione dalla GegraphicLib per muovermi sul geoide */
+/* Utilizzo le funzioni messe a disposizione dalla GeographicLib per muovermi sul geoide */
 #include <GeographicLib/Math.hpp>
 #include <GeographicLib/Geodesic.hpp>
 #include <GeographicLib/GeodesicLine.hpp>
-#include <GeographicLib/Gnomonic.hpp>
+#include <GeographicLib/AzimuthalEquidistant.hpp>
 
 #include <radarcoordlib/radar_coord_exceptions.hpp>
 #include <radarcoordlib/generic.hpp>
@@ -30,7 +30,7 @@ using namespace GeographicLib;
 /*!
  * The point coordinate could be passed as one of the following options:\n
  * - Geographic (Latitude, Longitude)\n
- * - Gnomonic projection centred on the radar site (Xcoord, Ycoord) in meter\n
+ * - Aeqd projection centred on the radar site (Xcoord, Ycoord) in meter\n
  * - Geodetic coordinate (Azimuth, distance over Earth surface) (Degree, meter)
  */ 
 class RadarGeoCoord_util{
@@ -43,10 +43,10 @@ class RadarGeoCoord_util{
 	RadarSite radar_site;
 
 	/*! Xcoord_p */
-	/*! Gnomonic X coordinate value for the point evaluated */
+	/*! Aeqd X coordinate value for the point evaluated */
 	float  Xcoord_p;
 	/*! Ycoord_p */
-	/*! Gnomonic Y coordinate value for the point evaluated */
+	/*! Aeqd Y coordinate value for the point evaluated */
 	float  Ycoord_p;
 	/*! Lat_p */
 	/*! Latitude coordinate for the point evaluated */
@@ -127,12 +127,12 @@ class RadarGeoCoord_util{
 	virtual void setPoint2Missing();
 
 	/*!
-	 * \brief Set Gnomonic coordinates (Gnomonic projection centred on radar site)
+	 * \brief Set Aeqd coordinates (Aeqd projection centred on radar site)
 	 * \param[in] X  - x coordinate (meter)
 	 * \param[in] Y  - y coordinate (meter)
 	 * \param[in] cleanOtherCoords  If true Geodesic and Geographic coordinate will be unset. 
 	 */
-	void setPointGnomoCoords(float X, float Y, bool cleanOtherCoords = true) ;
+	void setPointAeqdCoords(float X, float Y, bool cleanOtherCoords = true) ;
 
 	/*!
 	 * \brief Check if point X coordinate is valid
@@ -147,34 +147,34 @@ class RadarGeoCoord_util{
 	bool isPointYCoordSet(); 
 
 	/*!
-	 * \brief Check if point Gnomonic coordinates are valid
+	 * \brief Check if point Aeqd coordinates are valid
 	 * \return true if both coordinates are set
 	 */
-	bool isPointGnomoCoordsSet();
+	bool isPointAeqdCoordsSet();
 
 	/*!
-	 * \brief Get point X coordinate (Gnomonic projection centred on radar site)
+	 * \brief Get point X coordinate (Aeqd projection centred on radar site)
 	 * \return x coordinate (meter)
 	 */
 	float getPointXCoord(); 
 
 	/*!
-	 * \brief Get point y coordinate (Gnomonic projection centred on radar site)
+	 * \brief Get point y coordinate (Aeqd projection centred on radar site)
 	 * \return y coordinate (meter)
 	 */
 	float getPointYCoord(); 
 
 	/*!
-	 * \brief Compute geographic coordinates from Gnomonic coordinates
+	 * \brief Compute geographic coordinates from Aeqd coordinates
 	 * \return true if geographich coordinates are calculated
 	 */
-	bool GnomoCoords2GeoCoords () ;
+	bool AeqdCoords2GeoCoords () ;
 	
 	/*!
 	 * \brief Set point geographic coordinates
 	 * \param[in] lat  - latitude (degree N)
 	 * \param[in] lon  - longitude (degree E)
-	 * \param[in] cleanOtherCoords  If true Geodesic and Gnomonic coordinate will be unset. 
+	 * \param[in] cleanOtherCoords  If true Geodesic and Aeqd coordinate will be unset. 
 	 */
 	void setPointGeoCoords(float lat, float lon, bool cleanOtherCoords = true) ;
 
@@ -208,16 +208,16 @@ class RadarGeoCoord_util{
 	float getPointLon(); 
 
 	/*!
-	 * \brief Compute Gnomonic coordinates fro Geographic coordinates
+	 * \brief Compute Aeqd coordinates fro Geographic coordinates
 	 * \return true if gnomonic coordinates are calculated
 	 */
-	bool GeoCoords2GnomoCoords () ;
+	bool GeoCoords2AeqdCoords () ;
 	
 	/*!
 	 * \brief Calculate Earth distance and Azimuth from radar site to the point set.
 	 */
 	/*! 
- 	* One of Gnomonic or Geographic coords should be set
+ 	* One of Aeqd or Geographic coords should be set
  	* Detail description\n
  	* Geodesic parameters are calculate based on 
  	* GeographicLib available at http://sourceforge.net/projects/geographiclib/
@@ -242,7 +242,7 @@ class RadarGeoCoord_util{
 	 * \brief  Set Geodesic coordinate (Azimuth, Surface distance)
 	 * \param[in] Azimuth           direction from radar site (Degree N)
 	 * \param[in] SurfaceDist       distance over the Earth surface between radar site and Earth point
-	 * \param[in] cleanOtherCoords  If true Gnomonic and Geographic coordinate will be unset. 
+	 * \param[in] cleanOtherCoords  If true Aeqd and Geographic coordinate will be unset. 
 	 */
 	void setPointGeodesicCoordinate (float Azimuth, float SurfaceDist, bool cleanOtherCoords = true);
 
@@ -277,7 +277,7 @@ class RadarGeoCoord_util{
 	float getAzimuth() ;
 	
 	/*!
-	 * \brief Compute point coordinates for all Gnomonic,Geographic and Geodesic systems
+	 * \brief Compute point coordinates for all Aeqd,Geographic and Geodesic systems
 	 * \return True if calculation of coordinate is done\n
 	 *        False if calcualtion is not possible
 	 */
@@ -312,13 +312,13 @@ protected:
 	void setAntennaTowerHeight( float value);
 
 	/*!
-	 * \brief Set point X coordinate (Gnomonic projection centred on radar site)
+	 * \brief Set point X coordinate (Aeqd projection centred on radar site)
 	 * \param[in] value  - x coordinate (meter)
 	 */
 	void setPointXCoord(float value); 
 
 	/*!
-	 * \brief Set point y coordinate (Gnomonic projection centred on radar site)
+	 * \brief Set point y coordinate (Aeqd projection centred on radar site)
 	 * \param[in] value  - y coordinate (meter)
 	 */
 	void setPointYCoord(float value); 
