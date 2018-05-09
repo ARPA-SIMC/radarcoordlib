@@ -1,33 +1,31 @@
-Summary: Radar Coord Lib
-Name:    radarcoordlib
-Version: 0.4
-Release: 2763%{?dist}
-License: GPLv2+
-URL:     http://www.arpa.emr.it/sim
-Source0: %{name}-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+Summary:       Library to manage radar geodetic calculations
+Name:          radarcoordlib
+Version:       0.4
+Release:       2763%{?dist}
+License:       GPLv2+
+URL:           https://github.com/arpa-simc/%{name}
+Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
+BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: GeographicLib-devel >= 1.38
-Requires: GeographicLib >= 1.38
-Obsoletes: coordlib-devel
-Conflicts: radarlib-tools <= 0.1
+Requires:      GeographicLib >= 1.38
 
 %description
-Radar Coord Lib
+Library to manage radar geodetic calculations
 
 %prep
-%setup -q
+%setup -q %{name}-%{version}-%{release}
+sh autogen.sh
 
 %build
 %configure
 make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
+[ "%{buildroot}" != / ] && rm -rf %{buildroot}
 %make_install
 
 %clean
-rm -rf %{buildroot}
-
+[ "%{buildroot}" != / ] && rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
