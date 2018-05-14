@@ -1,7 +1,7 @@
 Summary:       Library to manage radar geodetic calculations
 Name:          radarcoordlib
 Version:       0.5
-Release:       1%{?dist}
+Release:       1
 License:       GPLv2+
 URL:           https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
