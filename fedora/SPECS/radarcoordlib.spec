@@ -13,7 +13,7 @@ Requires:      GeographicLib >= 1.38
 Library to manage radar geodetic calculations
 
 %prep
-%setup -q %{name}-%{version}-%{release}
+%setup -q -n %{name}-%{version}-%{release}
 sh autogen.sh
 
 %build
