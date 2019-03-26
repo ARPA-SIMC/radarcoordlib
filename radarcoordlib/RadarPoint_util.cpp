@@ -50,7 +50,7 @@ void RadarPoint_util::setPoint2Missing(){
   BeamDistance    = m; 
 }
 
-float RadarPoint_util::setElevation(float value) {
+void RadarPoint_util::setElevation(float value) {
   Elevation=value;
 }
 
@@ -62,14 +62,14 @@ bool RadarPoint_util::isElevationSet() {
 
 float RadarPoint_util::getElevation() {return Elevation;}
 	
-float RadarPoint_util::setHeight (float value) {Height = value; } //radarHeight2radarElev () ;}
+void RadarPoint_util::setHeight (float value) {Height = value; } //radarHeight2radarElev () ;}
 bool RadarPoint_util::isHeightSet() {
  	  if (generic::isMissing(getHeight())) return false;
 	  return true;
         }
 float RadarPoint_util::getHeight() {return  Height;}
 
-float RadarPoint_util::setBeamDistance(float value) {BeamDistance = value;}
+void RadarPoint_util::setBeamDistance(float value) {BeamDistance = value;}
 
 bool RadarPoint_util::isBeamDistanceSet() {
   if (generic::isMissing(getBeamDistance())) return false;

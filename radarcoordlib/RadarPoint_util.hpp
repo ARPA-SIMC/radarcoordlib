@@ -31,7 +31,8 @@ using namespace std;
  * This class compute conversion between coordinate system
  */
 class RadarPoint_util : public RadarGeoCoord_util{
-private:
+//private:
+protected:
 /*!
  *Slantwise distance of the radar point along the radar beam (meter)
  */
@@ -302,19 +303,19 @@ protected:
  * \brief Set height (above msl) of the center of the beam 
  * \param[in]  value (meter)
  */
-	float setHeight (float value); 
+	void setHeight (float value); 
 
 /*!
  * \brief Set slantwise distance along the ray 
  * \param[in]  value (meter)
  */
-	float setBeamDistance (float value); 
+	void setBeamDistance (float value); 
 
 /*!
  * \brief Set beam elevation
  * \param[in]  value (degree above horizon)
  */
-	float setElevation(float value);
+	void setElevation(float value);
 };
 
 #endif
