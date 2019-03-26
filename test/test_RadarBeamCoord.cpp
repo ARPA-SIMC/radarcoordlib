@@ -4,7 +4,7 @@
 #include <radarcoordlib/RadarBeamCoord_util.hpp>
 
 using namespace std;
-main(){
+int main(){
 
 cout<<" test elev_sd_2_beamHeight"<<endl;
 

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-main () {
+int main () {
   float latp = 44.6547, lonp = 11.6236, hr=11., ath=25.; // SPC
   float latr = 44.7914, lonr = 10.4992;               // GAT
   float X,Y;

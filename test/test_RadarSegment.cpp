@@ -6,7 +6,7 @@
 
 using namespace std;
 
-main () {
+int main () {
   float latr = 44.6547, lonr = 11.6236, hr=11., ath=25.; // SPC
 //  float latr = 44.7914, lonr = 10.4992;               // GAT
 //  float lat_start=44.870307 ;
