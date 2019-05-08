@@ -88,8 +88,7 @@
     float RadarBeamCoord_util::br_bh_2_elev(float beamRange, float beamHeight){
 	float elev, elev_inc;
 	float h, h1;
-	
-	if (beamHeight < 0. || beamHeight > beamRange ) throw 20;
+	if ( beamHeight > beamRange ) return 90.;      // scelta discutibile il caso BeamHeight > beamRange non è possibile. Utilizzata per far tornare un valore fisso. Forse sarebbe meglio un throw e gestire il tutto
 	elev=-2.;							//valore iniziale di ricerca elevazione
 	h1=RadarBeamCoord_util::elev_br_2_beamHeight(elev,beamRange);    	// valore iniziale elevazione
 	if (beamHeight - h1 > 0) {
@@ -99,7 +98,7 @@
 	} else throw 20;
 // search nearest elevation to given bin-range and bin-height
 	while (elev_inc >0.001){ 
-	   elev=elev + elev_inc;
+     		elev=elev + elev_inc;
 	   h=RadarBeamCoord_util::elev_br_2_beamHeight(elev,beamRange);    	
 	   if ( (h1-beamHeight)*(h-beamHeight) > 0) {
 	     h1=h;
@@ -113,6 +112,7 @@
 // compute beam elevation from beam height and beam range
     float RadarBeamCoord_util::br_bh_2_elev(float beamRange, float beamHeight,float alt_rad){
     	float elev;
+	if (beamHeight < 0. ) throw 20;
 	elev=RadarBeamCoord_util::br_bh_2_elev(beamRange, beamHeight-alt_rad);
 	return elev;
 }
@@ -121,8 +121,6 @@
     float RadarBeamCoord_util::ds_bh_2_elev(float surfDistance, float beamHeight){
 	float elev, elev_inc;
 	float h, h1;
-	
-//	if (beamHeight < 0. ) throw 20;
 	elev=-2.;							//valore iniziale di ricerca elevazione
 	h1=RadarBeamCoord_util::elev_sd_2_beamHeight(elev,surfDistance);    	// valore iniziale elevazione
 	if (beamHeight - h1 > 0) {
@@ -145,5 +143,6 @@
 }
 // compute beamRange  from elevation and surface distance
     float RadarBeamCoord_util::ds_bh_2_elev(float surfDistance, float beamHeight,float alt_rad){
-     return RadarBeamCoord_util::ds_bh_2_elev(surfDistance, beamHeight-alt_rad);
+    if (beamHeight < 0. ) throw 20;
+    return RadarBeamCoord_util::ds_bh_2_elev(surfDistance, beamHeight-alt_rad);
 }

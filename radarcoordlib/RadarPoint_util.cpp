@@ -146,11 +146,11 @@ bool RadarPoint_util::radarHeight2radarElev(){
     alt_rad=getHeightR()+getAntennaTowerHeight();
     if (isBeamDistanceSet()) {
       R=getBeamDistance();
-      E= (R > 0.) ? Beam.br_bh_2_elev(R,H,alt_rad): 90.;
+      E= (R > 0.) ? Beam.br_bh_2_elev(R,H,alt_rad): 90.;  
       out = true;
     } else if (isSurfaceDistanceSet()){
       R=getSurfaceDistance();
-       E= (R > 0.) ? Beam.ds_bh_2_elev(R,H,alt_rad): 90.;
+       E= (R > 0.) ? Beam.ds_bh_2_elev(R,H,alt_rad): 90.; 
       out = true;
    }
   } 
