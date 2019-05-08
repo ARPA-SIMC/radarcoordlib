@@ -199,7 +199,7 @@ public:
  * \param[in] Azimuth           Direction from radar site (Degree N)
  * \param[in] H                 Height above msl (meter)
  * \param[in] BeamDist          Slantwise distance along the ray (m)
- * \param[in] cleanOtherCoords  If true Geodesic and Geographic and Height coordinate will be unset. 
+ * \param[in] cleanOtherCoords  If true Geodesic and Geographic and Elevation coordinate will be unset. 
  */
 	void setPointRadarCoordinateHeight (float Azimuth, float H, float BeamDist, bool cleanOtherCoords = true); 
 
