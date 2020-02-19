@@ -32,7 +32,7 @@ then
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
     dnf update -y
-    dnf install -q -y @buildsys-build
+    dnf install -q -y --allowerasing @buildsys-build
     dnf install -q -y 'dnf-command(builddep)'
     dnf install -q -y git
 fi
