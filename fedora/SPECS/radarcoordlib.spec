@@ -39,7 +39,7 @@ make %{?_smp_mflags}
 * Tue May 14 2019 Daniele Branchini <dbranchini@arpae.it> - 0.7-1
 - Fixed management for point very close to radar
 
-* Thu Mar 26 2019 Daniele Branchini <dbranchini@arpae.it> - 0.6-1
+* Tue Mar 26 2019 Daniele Branchini <dbranchini@arpae.it> - 0.6-1
 - Fixed bug in method definitions
 
 * Wed May 9 2018  Daniele Branchini <dbranchini@arpae.it> - 0.5-1
