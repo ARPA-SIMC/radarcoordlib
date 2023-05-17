@@ -1,7 +1,8 @@
 [![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/centos7.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
-[![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/centos8.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
-[![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/fedora34.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
+[![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/rocky8.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
+[![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/rocky9.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
 [![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/fedora36.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
+[![Build Status](https://simc.arpae.it/moncic-ci/radarcoordlib/fedora38.png)](https://simc.arpae.it/moncic-ci/radarcoordlib/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/radarcoordlib/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/radarcoordlib/)
 
 # Radarcoordlib
