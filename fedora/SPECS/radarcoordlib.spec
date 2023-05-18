@@ -1,10 +1,13 @@
+# Note: define srcarchivename in CI build only.
+%{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{release}}
+
 Summary:       Library to manage radar geodetic calculations
 Name:          radarcoordlib
 Version:       0.7
 Release:       1
 License:       GPLv2+
 URL:           https://github.com/arpa-simc/%{name}
-Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
+Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: libtool doxygen gcc-c++ GeographicLib-devel >= 1.38
 Requires:      GeographicLib >= 1.38
@@ -13,7 +16,7 @@ Requires:      GeographicLib >= 1.38
 Library to manage radar geodetic calculations
 
 %prep
-%setup -q -n %{name}-%{version}-%{release}
+%setup -q -n %{srcarchivename}
 sh autogen.sh
 
 %build
