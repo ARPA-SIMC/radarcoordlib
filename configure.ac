@@ -11,10 +11,18 @@ AC_PROG_CXX
 AM_INIT_AUTOMAKE([foreign nostdinc subdir-objects])
 LT_INIT
 
-# Checks for libraries.
-AC_CHECK_LIB([Geographic], [main],
-             [LIBS="$LIBS -lGeographic"],
-	     [AC_MSG_ERROR([GeographicLib not found])])
+# Check for Geographic library, first using pkconfig and then inspecting the library symbols
+PKG_CHECK_EXISTS([Geographic], [have_geographic=yes], [have_geographic=no])
+if test x$have_geographic = xyes
+then
+    AC_DEFINE(HAVE_GEOGRAPHIC], 1, [Geographic functions are available])
+    PKG_CHECK_MODULES([GEOGRAPHIC], [Geographic])
+else
+    AC_CHECK_LIB([Geographic],
+                 [main],
+                 [LIBS="$LIBS -lGeographic"],
+                 [AC_MSG_ERROR([Geographic library not found])])
+fi
 
 
 AC_CONFIG_FILES([Makefile
