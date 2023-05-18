@@ -12,11 +12,11 @@ AM_INIT_AUTOMAKE([foreign nostdinc subdir-objects])
 LT_INIT
 
 # Check for Geographic library, first using pkconfig and then inspecting the library symbols
-PKG_CHECK_EXISTS([Geographic], [have_geographic=yes], [have_geographic=no])
+PKG_CHECK_EXISTS([geographiclib], [have_geographic=yes], [have_geographic=no])
 if test x$have_geographic = xyes
 then
-    AC_DEFINE(HAVE_GEOGRAPHIC], 1, [Geographic functions are available])
-    PKG_CHECK_MODULES([GEOGRAPHIC], [Geographic])
+    AC_DEFINE(HAVE_GEOGRAPHIC], 1, [Geographic library is available])
+    PKG_CHECK_MODULES([GEOGRAPHIC], [geographiclib])
 else
     AC_CHECK_LIB([Geographic],
                  [main],
