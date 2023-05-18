@@ -15,7 +15,7 @@ LT_INIT
 PKG_CHECK_EXISTS([geographiclib], [have_geographic=yes], [have_geographic=no])
 if test x$have_geographic = xyes
 then
-    AC_DEFINE(HAVE_GEOGRAPHIC], 1, [Geographic library is available])
+    AC_DEFINE([HAVE_GEOGRAPHIC], 1, [Geographic library is available])
     PKG_CHECK_MODULES([GEOGRAPHIC], [geographiclib])
 else
     AC_CHECK_LIB([Geographic],
