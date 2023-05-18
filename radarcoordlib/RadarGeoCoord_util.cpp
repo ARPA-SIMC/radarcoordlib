@@ -127,7 +127,7 @@ bool RadarGeoCoord_util::calculateGeodesicParam() {
   LatPoint = (real)getPointLat();
   LonPoint = (real)getPointLon();
   dummy = g1.Inverse(LatRad, LonRad,LatPoint,LonPoint, S12,Az1,Az2);
-  if (Math::isnan(Az1)) return false;
+  if (std::isnan(Az1)) return false;
   setSurfaceDistance ((float) S12);
   setAzimuth((float)Az1);
   return true;
