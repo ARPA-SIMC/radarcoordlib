@@ -4,7 +4,7 @@
 Summary:       Library to manage radar geodetic calculations
 Name:          radarcoordlib
 Version:       0.7
-Release:       1
+Release:       2
 License:       GPLv2+
 URL:           https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
@@ -39,6 +39,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Thu Jun  1 2023 Daniele Branchini <dbranchini@arpae.it> - 0.7-2
+- Bogus release to trigger a f38 rebuild for conflicts with geographiclib
+
 * Tue May 14 2019 Daniele Branchini <dbranchini@arpae.it> - 0.7-1
 - Fixed management for point very close to radar
 
