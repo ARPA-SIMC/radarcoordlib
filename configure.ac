@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([radarcoordlib], [0.7], [palberoni@arpae.it])
+AC_INIT([radarcoordlib], [0.8], [palberoni@arpae.it])
 
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
