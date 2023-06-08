@@ -17,6 +17,7 @@ if test x$have_geographic = xyes
 then
     AC_DEFINE([HAVE_GEOGRAPHIC], 1, [Geographic library is available])
     PKG_CHECK_MODULES([GEOGRAPHIC], [geographiclib])
+    LIBS="$LIBS $GEOGRAPHIC_LIB"
 else
     AC_CHECK_LIB([Geographic],
                  [main],
